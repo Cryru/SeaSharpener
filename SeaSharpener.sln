@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaSharpener", "SeaSharpener\SeaSharpener.csproj", "{760F26CA-D5F1-44CD-B70D-15425F70A5D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeaSharpener", "SeaSharpener\SeaSharpener.csproj", "{760F26CA-D5F1-44CD-B70D-15425F70A5D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaSharpener.ExecTest", "SeaSharpener.ExecTest\SeaSharpener.ExecTest.csproj", "{526A0E6C-613A-4497-AB5F-83851763147D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{760F26CA-D5F1-44CD-B70D-15425F70A5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{760F26CA-D5F1-44CD-B70D-15425F70A5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{760F26CA-D5F1-44CD-B70D-15425F70A5D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{526A0E6C-613A-4497-AB5F-83851763147D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{526A0E6C-613A-4497-AB5F-83851763147D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{526A0E6C-613A-4497-AB5F-83851763147D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{526A0E6C-613A-4497-AB5F-83851763147D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
