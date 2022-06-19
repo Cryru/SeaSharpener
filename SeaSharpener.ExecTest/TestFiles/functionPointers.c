@@ -15,6 +15,11 @@ void actualFunction(int arg)
 
 int main()
 {
-	StructWithFunction* variable = (StructWithFunction*) malloc(sizeof(StructWithFunction));
-	variable->test = actualFunction;
+	// Illegal in conversion due to StructWithFunction_ becoming a class V
+	// StructWithFunction* variable = (StructWithFunction*) malloc(sizeof(StructWithFunction));
+
+	StructWithFunction variable;
+	variable.test = actualFunction;
+
+	return 0;
 }

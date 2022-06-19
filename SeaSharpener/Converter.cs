@@ -52,7 +52,7 @@ namespace SeaSharpener
             Logger.Log("Runtime copied.");
 
             Logger.Log($"Done in {timer.ElapsedMilliseconds}ms!");
-            Logger.Log($"======================================");
+            Logger.Log("======================================");
 
             return true;
         }
@@ -70,6 +70,8 @@ namespace SeaSharpener
             sw.WriteLine("using System;");
             sw.WriteLine("using System.Runtime.InteropServices;");
             sw.WriteLine("using static SeaSharpener.CRuntime;");
+            sw.WriteLine("");
+            sw.WriteLine("#nullable disable");
             sw.WriteLine();
 
             sw.WriteLine($"namespace {project.ProjectName}");

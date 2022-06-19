@@ -9,4 +9,6 @@ int main(int argc, char* argv[])
 	#endif
 
 	functionInHeaderTwo(1, 2);
+
+	return 0;
 }

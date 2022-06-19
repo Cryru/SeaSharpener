@@ -14,6 +14,7 @@ namespace SeaSharpener.Roslyn
         public List<FieldDeclarationSyntax> GlobalConstants = new();
         public List<TypeDeclarationSyntax> Structs = new();
         public List<DelegateDeclarationSyntax> FunctionTypes = new();
+        public List<MethodDeclarationSyntax> Functions = new();
 
         private List<(string, RecordDecl)> _structs = new();
         private Dictionary<string, List<string>> _structDependencies = new();

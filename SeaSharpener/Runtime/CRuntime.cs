@@ -13,6 +13,25 @@ namespace SeaSharpener
     /// </summary>
     public static unsafe class CRuntime
     {
+        public static void printf(string str, params object[] param)
+        {
+            str = string.Format(str, param);
+
+            if (str[^1] == '\n')
+            {
+                Console.Write(str);
+                return;
+            }
+
+            Console.WriteLine(str);
+        }
+
+        public static void scanf(string something, double* val)
+        {
+            string? readStr = Console.ReadLine();
+            if (readStr != null && double.TryParse(readStr, out double parsedDouble)) *val = parsedDouble;
+        }
+
         public static void* malloc(ulong size)
         {
             return malloc((long) size);

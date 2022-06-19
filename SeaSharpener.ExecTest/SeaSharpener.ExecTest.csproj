@@ -13,6 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="TestFiles\other.c">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="TestFiles\functionPointers.c">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

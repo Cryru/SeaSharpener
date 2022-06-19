@@ -19,7 +19,7 @@ namespace SeaSharpener.Roslyn
     /// <summary>
     /// Generates Roslyn expressions based on the Clang translation unit.
     /// </summary>
-    public static class RoslynGenerator
+    public static partial class RoslynGenerator
     {
         public static RoslynCodeOutput Generate(SeaProject project, TranslationUnit translationUnit)
         {
@@ -66,6 +66,8 @@ namespace SeaSharpener.Roslyn
             {
                 var funcDecl = cursor as FunctionDecl;
                 if (funcDecl == null || !funcDecl.HasBody) continue;
+
+                GenerateFunction(output, funcDecl);
             }
 
             return output;
@@ -393,8 +395,6 @@ namespace SeaSharpener.Roslyn
         {
         }
 
-        private static void GenerateFunctions(RoslynCodeOutput output)
-        {
-        }
+       
     }
 }

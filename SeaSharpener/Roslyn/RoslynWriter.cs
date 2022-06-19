@@ -58,6 +58,15 @@ namespace SeaSharpener.Roslyn
             }
 
             if (output.Structs.Count > 0) writer.WriteLine();
+
+            Logger.Log($"    Writing {output.Functions.Count} functions");
+            for (var i = 0; i < output.Functions.Count; i++)
+            {
+                MethodDeclarationSyntax syntax = output.Functions[i];
+                writer.WriteLine(WriteSyntaxIndented(syntax));
+
+                if (i != output.Functions.Count - 1) writer.WriteLine();
+            }
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
-﻿typedef enum EnumDef_
+﻿#include <stdlib.h>
+
+typedef enum EnumDef_
 {
 	VALUE_ONE = 5,
 	VALUE_TWO = 0 << 2, // todo: BinaryOperation is unsupported
@@ -35,3 +37,9 @@ typedef struct NestedEnumStruct_
 	//enum nestedNamesStruct testField;
 	int field;
 } NestedEnumStruct;
+
+void testFuncTwo(NestedEnumStruct* pObj)
+{
+	EnumDefPtr newEnumPtr = (EnumDefPtr) malloc(sizeof(EnumDefPtr));
+	pObj->enumDefPtrField = newEnumPtr;
+}

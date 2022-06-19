@@ -19,7 +19,6 @@ namespace SeaSharpener.ExecTest
                     "TestFiles/mainWithPrint.c"
                 }
             };
-
             Converter.Convert(mainWithPrint);
 
             var referencing = new SeaProject
@@ -67,19 +66,27 @@ namespace SeaSharpener.ExecTest
             };
             Converter.Convert(functionPointers);
 
-            //DotNetBuild(mainWithPrint);
-            //DotNetBuild(referencing);
-            //DotNetBuild(enums);
-            //DotNetBuild(structs);
-            DotNetBuild(functionPointers);
+            var other = new SeaProject
+            {
+                ProjectName = "Other",
+                SourceFiles = new[]
+                {
+                    "TestFiles/other.c"
+                },
+            };
+            Converter.Convert(other);
 
-            Console.WriteLine("Press any key to close.");
-            Console.ReadKey();
+            DotNetBuild(mainWithPrint);
+            DotNetBuild(referencing);
+            DotNetBuild(enums);
+            DotNetBuild(structs);
+            DotNetBuild(functionPointers);
+            DotNetBuild(other);
         }
 
         private static void DotNetBuild(SeaProject project)
         {
-            var processStart = new ProcessStartInfo()
+            var processStart = new ProcessStartInfo
             {
                 WorkingDirectory = project.OutputDirectory,
                 FileName = "dotnet",

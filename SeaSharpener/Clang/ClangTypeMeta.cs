@@ -60,7 +60,9 @@ namespace SeaSharpener.Clang
             {
                 pointerSb.Append("*");
             }
-            return pointerSb.ToString();;
+
+            return pointerSb.ToString();
+            ;
         }
 
         public string GetArrayDimensionsString()

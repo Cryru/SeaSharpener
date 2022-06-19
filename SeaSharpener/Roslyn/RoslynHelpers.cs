@@ -1,5 +1,6 @@
 ﻿#region Using
 
+using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
@@ -74,6 +75,61 @@ namespace SeaSharpener.Roslyn
             if (string.IsNullOrEmpty(trimmed)) return trimmed;
             if (!trimmed.EndsWith(";") && !trimmed.EndsWith("}")) return statement + ";";
             return statement;
+        }
+
+        /// <summary>
+        /// Verifies that the number of parenthesis in the expression matches.
+        /// </summary>
+        public static bool CorrectlyParentized(string expr)
+        {
+            if (string.IsNullOrEmpty(expr)) return false;
+
+            expr = expr.Trim();
+            if (!expr.StartsWith("(") || !expr.EndsWith(")")) return false;
+
+            var parenCount = 1;
+            for (var i = 1; i < expr.Length - 1; i++)
+            {
+                char c = expr[i];
+
+                switch (c)
+                {
+                    case '(':
+                        parenCount++;
+                        break;
+                    case ')':
+                        parenCount--;
+                        break;
+                }
+
+                if (parenCount == 0) break;
+            }
+
+            return parenCount > 0;
+        }
+
+        public static string Parentize(string expr)
+        {
+            if (CorrectlyParentized(expr)) return expr;
+            return "(" + expr + ")";
+        }
+
+        public static string Deparentize(string expr)
+        {
+            if (string.IsNullOrEmpty(expr)) return expr;
+
+            // Remove white space
+            expr = Regex.Replace(expr, @"\s+", "");
+            while (CorrectlyParentized(expr)) expr = expr[1..^1];
+
+            return expr;
+        }
+
+        public static string EnsureCurlyBraces(string expr)
+        {
+            expr = expr.Trim();
+            if (expr.StartsWith("{") && expr.EndsWith("}")) return expr;
+            return $"{{{expr}}}";
         }
     }
 }

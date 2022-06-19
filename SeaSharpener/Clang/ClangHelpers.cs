@@ -69,5 +69,22 @@ namespace SeaSharpener.Clang
         {
             return decl.TypeForDecl.AsString.Replace("struct ", string.Empty);
         }
+
+        public static unsafe string[] Tokenize(CXCursor cursor)
+        {
+            CXSourceRange range = clang.getCursorExtent(cursor);
+            CXToken *nativeTokens;
+            uint numTokens;
+            clang.tokenize(cursor.TranslationUnit, range, &nativeTokens, &numTokens);
+
+            var result = new List<string>();
+            for (uint i = 0; i < numTokens; ++i)
+            {
+                var name = clang.getTokenSpelling(cursor.TranslationUnit, nativeTokens[i]).ToString();
+                result.Add(name);
+            }
+
+            return result.ToArray();
+        }
     }
 }
